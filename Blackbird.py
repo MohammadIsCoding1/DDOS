@@ -3,10 +3,9 @@ import threading
 import re
 import random
 import sys
-from 
 from time import sleep
 
-url=''
+url=sys.argv[0]
 threading_usages=input('How much threads > ')
 headers_referers=[]
 user_agent=[]
