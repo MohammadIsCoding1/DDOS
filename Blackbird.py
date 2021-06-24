@@ -2962,8 +2962,7 @@ def trang():
   while True:
     sleep(5)
     userAgentCHoose=random.choices(user_agent)
-    
-  headers['User-Agent']=userAgentCHoose
+    headers['User-Agent']=userAgentCHoose
   req=urllib.request.Request(url, headers=headers)
   thrill=urllib.request.urlopen(req)
 	
