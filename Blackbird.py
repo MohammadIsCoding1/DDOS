@@ -2953,6 +2953,7 @@ def usage():
 	
 if sys.argv[0]=='-h':
 	usage()
+	exit()
 
 if sys.argv[0]=='credit':
 	print('github : https://github.com/NotFoundHacker')
